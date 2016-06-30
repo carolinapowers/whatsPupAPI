@@ -38,7 +38,8 @@ module.exports = function(app){
                 packages: req.body.packages,
                 plants: req.body.plants,
                 other: req.body.other,
-                message: req.body.message
+                message: req.body.message,
+                image: req.body.image
             }
         }
         console.log(req.body);
