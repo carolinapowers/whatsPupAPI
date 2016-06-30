@@ -11,11 +11,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
-app.get('/test', function (req,res){
-    res.send(process.env.PASSWORD);
-})
-//process.env.USERNAME
-//process.env.PASSWORD
 require('./app/routing/api-routes.js')(app); 
 
 app.listen (PORT, function () {
