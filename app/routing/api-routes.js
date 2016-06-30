@@ -40,13 +40,13 @@ module.exports = function(app){
         transporter.use('compile', hbs(handlebarOptions));
         
         transporter.sendMail(mailOptions, function(error, response){
-        if(error){
-            console.log('email error ', error);
-        res.end("error");
-        }else{
-            console.log("Message sent: " + response);
-            res.end("sent");
-        }
+            if(error){
+                console.log('email error ', error);
+                res.end("error");
+            }else{
+                console.log("Message sent: " + response);
+                res.end("sent");
+            }
         });
     });
 }
