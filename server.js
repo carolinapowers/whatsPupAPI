@@ -11,8 +11,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
+app.get('/test', function (req,res){
+    res.send(process.env.TEST);
+})
+
 require('./app/routing/api-routes.js')(app); 
 
 app.listen (PORT, function () {
 	console.log("Listening to app at port %d", PORT);
 })
+
