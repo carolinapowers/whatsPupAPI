@@ -1,7 +1,7 @@
 var credentials = {service: "Gmail",
     auth: {
-        user: "whatspupapp@gmail.com",
-        pass: "auauwoofwoof"
+        user: process.env.USERNAME,
+        pass: process.env.PASSWORD
     }
 }
 
