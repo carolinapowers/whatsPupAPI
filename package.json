@@ -1,0 +1,20 @@
+{
+  "name": "whatspupapi",
+  "version": "1.0.0",
+  "description": "API for sending emails from WhatsPup App.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carolinapowers/whatsPupAPI.git"
+  },
+  "author": "Carolina Powers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carolinapowers/whatsPupAPI/issues"
+  },
+  "homepage": "https://github.com/carolinapowers/whatsPupAPI#readme"
+}
