@@ -33,6 +33,11 @@ module.exports = function(app){
                 play: req.body.play,    
                 treats: req.body.treats,
                 meds: req.body.meds,
+                mess: req.body.mess,
+                mail: req.body.mail,
+                packages: req.body.packages,
+                plants: req.body.plants,
+                other: req.body.other,
                 message: req.body.message
             }
         }
