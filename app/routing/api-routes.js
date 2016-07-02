@@ -31,8 +31,7 @@ module.exports = function(app){
                 content: req.body.imageString,
                 encoding: 'base64',
                 headers: 'Attachment:'
-                cid: 'unique@node.ee',
-                contentDisposition: 'inline'
+                cid: 'unique@node.ee'
             },
             context : {
                 to: req.body.to,
