@@ -19,9 +19,13 @@ var handlebarOptions = {
  };
 
 module.exports = function(app){
+
+    app.post('/api/email', function (req, res) {
+        res.json(mailOptions);
+    })
   
 	app.post('/api/email', function(req, res){         
-        var mailOptions={
+        mailOptions={
             to : req.body.to,
             subject : "New Visit Update from WhatsPup",
             text : req.body.text,
@@ -43,8 +47,10 @@ module.exports = function(app){
                 image: req.body.image
             }
         }
+
+
         console.log(req.body);
-        res.send(req.body.image);
+
         transporter.use('compile', inlineBase64)
         transporter.use('compile', hbs(handlebarOptions));
         
