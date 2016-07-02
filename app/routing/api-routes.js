@@ -22,7 +22,7 @@ module.exports = function(app){
     var mailOptions ={};
     var errMessage = ""
 ;    app.get('/api/email', function (req, res) {
-        res.json(mailOptions);
+        //res.json(mailOptions);
         res.send(errMessage);
     });
   
@@ -66,5 +66,7 @@ module.exports = function(app){
                 res.end("sent");
             }
         });
+
+        return errMessage;
     });
 }
