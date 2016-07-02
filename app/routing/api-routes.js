@@ -30,7 +30,7 @@ module.exports = function(app){
                 filename: "pup.jpg",
                 content: req.body.imageString,
                 encoding: 'base64'
-            }
+            },
             context : {
                 to: req.body.to,
                 time: req.body.time,
