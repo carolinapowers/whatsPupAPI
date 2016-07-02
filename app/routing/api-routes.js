@@ -20,8 +20,10 @@ var handlebarOptions = {
 
 module.exports = function(app){
     var mailOptions ={};
-    app.get('/api/email', function (req, res) {
+    var errMessage = ""
+;    app.get('/api/email', function (req, res) {
         res.json(mailOptions);
+        res.send(errMessage);
     });
   
 	app.post('/api/email', function(req, res){         
@@ -57,8 +59,8 @@ module.exports = function(app){
         transporter.sendMail(mailOptions, function(error, response){
             if(error){
                 console.log('email error ', error);
-                res.send(error);
-                res.end("error");
+                errMessage(error);
+                //res.end("error");
             }else{
                 console.log("Message sent: " + response);
                 res.end("sent");
