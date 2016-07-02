@@ -19,14 +19,9 @@ var handlebarOptions = {
  };
 
 module.exports = function(app){
-    var mailOptions ={};
-    var errMessage = ""
-;    app.get('/api/email', function (req, res) {
-        res.json(mailOptions);
-    });
   
 	app.post('/api/email', function(req, res){         
-        mailOptions={
+        var mailOptions={
             to : req.body.to,
             subject : "New Visit Update from WhatsPup",
             text : req.body.text,
@@ -54,9 +49,8 @@ module.exports = function(app){
         
         transporter.sendMail(mailOptions, function(error, response){
             if(error){
-                console.log('email error ', error);
-                errMessage(error);
-                //res.end("error");
+                console.log('email error ', error);  
+                res.end("error");
             }else{
                 console.log("Message sent: " + response);
                 res.end("sent");
