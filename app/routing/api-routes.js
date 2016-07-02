@@ -28,8 +28,7 @@ module.exports = function(app){
             template: 'email_body',
             attachments: {
                 filename: "pup.jpg",
-                content: req.body.image,
-                encoding: 'base64'
+                content: req.body.image
             }
             context : {
                 to: req.body.to,
