@@ -48,7 +48,7 @@ module.exports = function(app){
                 plants: req.body.plants,
                 other: req.body.other,
                 message: req.body.message,
-                image: mailOptions.attachments.cid
+                image: req.body.image
             }
         }
 
