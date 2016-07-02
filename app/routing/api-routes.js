@@ -30,9 +30,9 @@ module.exports = function(app){
                 filename: "pup.jpg",
                 content: req.body.imageString,
                 encoding: 'base64',
-                headers: 'Attachment:',
-                cid: 'attached',
-                contentDisposition: 'inline'
+                headers: 'Attachment:'
+                // cid: 'attached',
+                // contentDisposition: 'inline'
             },
             context : {
                 to: req.body.to,
