@@ -22,8 +22,7 @@ module.exports = function(app){
     var mailOptions ={};
     var errMessage = ""
 ;    app.get('/api/email', function (req, res) {
-        //res.json(mailOptions);
-        res.send(errMessage);
+        res.json(mailOptions);
     });
   
 	app.post('/api/email', function(req, res){         
@@ -50,23 +49,18 @@ module.exports = function(app){
             }
         }
 
-
-        console.log(req.body);
-
         transporter.use('compile', inlineBase64)
         transporter.use('compile', hbs(handlebarOptions));
         
-        transporter.sendMail(mailOptions, function(error, response){
-            if(error){
-                console.log('email error ', error);
-                errMessage(error);
-                //res.end("error");
-            }else{
-                console.log("Message sent: " + response);
-                res.end("sent");
-            }
-        });
-
-        return errMessage;
+        // transporter.sendMail(mailOptions, function(error, response){
+        //     if(error){
+        //         console.log('email error ', error);
+        //         errMessage(error);
+        //         //res.end("error");
+        //     }else{
+        //         console.log("Message sent: " + response);
+        //         res.end("sent");
+        //     }
+        // });
     });
 }
