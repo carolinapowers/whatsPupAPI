@@ -31,7 +31,7 @@ module.exports = function(app){
                 content: req.body.imageString,
                 encoding: 'base64',
                 headers: 'Attachment:'
-                cid: 'att',
+                cid: 'unique@node.ee',
                 contentDisposition: 'inline'
             },
             context : {
@@ -48,7 +48,7 @@ module.exports = function(app){
                 plants: req.body.plants,
                 other: req.body.other,
                 message: req.body.message,
-                image: this.attachments.cid
+                image: req.body.image
             }
         }
 
