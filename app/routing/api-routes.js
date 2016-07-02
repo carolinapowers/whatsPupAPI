@@ -23,14 +23,15 @@ module.exports = function(app){
 	app.post('/api/email', function(req, res){         
         var mailOptions={
             to : req.body.to,
-            subject : "New Visit Update from WhatsPup",
+            subject : 'New Visit Update from WhatsPup',
             text : req.body.text,
             template: 'email_body',
             attachments: {
                 filename: "pup.jpg",
                 content: req.body.imageString,
                 encoding: 'base64',
-                headers: 'Attachment:'
+                headers: 'Attachment:',
+                cid: 'attach'
             },
             context : {
                 to: req.body.to,
