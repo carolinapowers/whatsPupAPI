@@ -27,7 +27,7 @@ module.exports = function(app){
             text : req.body.text,
             template: 'email_body',
             attachments: {
-                filename: "pup.jpg",
+                filename: "Attachment: pup.jpeg",
                 content: req.body.imageString,
                 encoding: 'base64'
             },
@@ -45,7 +45,7 @@ module.exports = function(app){
                 plants: req.body.plants,
                 other: req.body.other,
                 message: req.body.message,
-                image: this.attachments
+                image: req.body.image
             }
         }
 
