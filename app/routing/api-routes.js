@@ -26,7 +26,6 @@ module.exports = function(app){
             subject : 'New Visit Update from WhatsPup',
             text : req.body.text,
             template: 'email_body',
-            //html: '<img src="cid:unique@kreata.ee"/>',
             attachments: {
                 filename: "pup.jpg",
                 content: req.body.imageString,
@@ -49,7 +48,7 @@ module.exports = function(app){
                 plants: req.body.plants,
                 other: req.body.other,
                 message: req.body.message,
-                image: this.attachments.cid
+                image: mailOptions.attachments.cid
             }
         }
 
