@@ -52,15 +52,15 @@ module.exports = function(app){
         transporter.use('compile', inlineBase64)
         transporter.use('compile', hbs(handlebarOptions));
         
-        // transporter.sendMail(mailOptions, function(error, response){
-        //     if(error){
-        //         console.log('email error ', error);
-        //         errMessage(error);
-        //         //res.end("error");
-        //     }else{
-        //         console.log("Message sent: " + response);
-        //         res.end("sent");
-        //     }
-        // });
+        transporter.sendMail(mailOptions, function(error, response){
+            if(error){
+                console.log('email error ', error);
+                errMessage(error);
+                //res.end("error");
+            }else{
+                console.log("Message sent: " + response);
+                res.end("sent");
+            }
+        });
     });
 }
