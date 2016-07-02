@@ -44,12 +44,14 @@ module.exports = function(app){
             }
         }
         console.log(req.body);
+        res.send(req.body.image);
         transporter.use('compile', inlineBase64)
         transporter.use('compile', hbs(handlebarOptions));
         
         transporter.sendMail(mailOptions, function(error, response){
             if(error){
                 console.log('email error ', error);
+                res.send(error);
                 res.end("error");
             }else{
                 console.log("Message sent: " + response);
