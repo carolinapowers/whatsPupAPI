@@ -5,6 +5,7 @@ var hbs             = require('nodemailer-express-handlebars');
 var smtpTransport   = require('nodemailer-smtp-transport');
 var parseUrlencoded = bodyParser.urlencoded({ extended: false });
 var transporter     = nodemailer.createTransport(smtpTransport(options));
+var inlineBase64 = require('nodemailer-plugin-inline-base64');
 
 var handlebarOptions = {
      viewEngine: {
@@ -43,6 +44,7 @@ module.exports = function(app){
             }
         }
         console.log(req.body);
+        transporter.use('compile', inlineBase64)
         transporter.use('compile', hbs(handlebarOptions));
         
         transporter.sendMail(mailOptions, function(error, response){
