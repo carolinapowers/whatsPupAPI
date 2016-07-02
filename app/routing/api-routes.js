@@ -31,7 +31,7 @@ module.exports = function(app){
                 filename: "pup.jpg",
                 content: req.body.imageString,
                 encoding: 'base64',
-                headers: 'Attachment:'
+                headers: 'Attachment:',
                 cid: 'unique@node.ee'
             },
             context : {
@@ -48,7 +48,7 @@ module.exports = function(app){
                 plants: req.body.plants,
                 other: req.body.other,
                 message: req.body.message,
-                //image: {{this.html}}
+                image: req.body.image
             }
         }
 
