@@ -20,7 +20,7 @@ var handlebarOptions = {
 
 module.exports = function(app){
     var mailOptions ={};
-    app.post('/api/email', function (req, res) {
+    app.get('/api/email', function (req, res) {
         res.json(mailOptions);
     });
   
