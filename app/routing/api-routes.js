@@ -26,6 +26,11 @@ module.exports = function(app){
             subject : "New Visit Update from WhatsPup",
             text : req.body.text,
             template: 'email_body',
+            attachments: {
+                filename: "pup.jpg",
+                content: req.body.image,
+                encoding: 'base64'
+            }
             context : {
                 to: req.body.to,
                 time: req.body.time,
