@@ -11,10 +11,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
-app.get('/', function (req, res) {
-	res.send(process.env.USERNAME);
-})
-
 require('./app/routing/api-routes.js')(app); 
 
 app.listen (PORT, function () {
