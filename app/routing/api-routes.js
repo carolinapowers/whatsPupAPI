@@ -47,6 +47,15 @@ module.exports = function(app){
 
 	app.post('/api/email', function(req, res){
 
+        var base64Matcher = new RegExp("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$");
+        var imgData;
+        
+        if (base64Matcher.test(req.body.image)) {
+            imgData = imgUrl;
+        } else {
+            imgData = req.body.image;
+        }
+
         var mailOptions={
             to : req.body.to,
             subject : 'New Visit Update from WhatsPup',
@@ -66,8 +75,8 @@ module.exports = function(app){
                 plants: req.body.plants,
                 other: req.body.other,
                 message: req.body.message,
-                //image: req.body.image
-                image: imgUrl
+                //image: req.body.image ? req.body.image: imgUrl
+                image: imgData
             }
         }
 
