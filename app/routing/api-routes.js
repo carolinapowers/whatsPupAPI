@@ -28,6 +28,19 @@ var handlebarOptions = {
 module.exports = function(app){
 
     var imgUrl;
+    var imgData;
+
+    function regexCheck (img) {
+        var base64Matcher = new RegExp("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$");
+        
+        if (base64Matcher.test(img)) {
+            imgData = imgUrl;
+        } else {
+            imgData = req.body.image;
+        }
+        return imgData;
+    }
+
 
     app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
@@ -45,16 +58,10 @@ module.exports = function(app){
         res.send(imgUrl);
    });
 
+
 	app.post('/api/email', function(req, res){
 
-        var base64Matcher = new RegExp("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$");
-        var imgData;
-        
-        if (base64Matcher.test(req.body.image)) {
-            imgData = imgUrl;
-        } else {
-            imgData = req.body.image;
-        }
+        regexCheck(req.body.image);
 
         var mailOptions={
             to : req.body.to,
