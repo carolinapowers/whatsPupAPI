@@ -52,14 +52,6 @@ module.exports = function(app){
             subject : 'New Visit Update from WhatsPup',
             text : req.body.text,
             template: 'email_body',
-            attachments: {
-                filename: "pup.jpg",
-                content: req.body.imageString,
-                encoding: 'base64',
-                headers: 'Attachment:',
-                cid: 'unique@node.ee',
-                contentDisposition: 'inline' 
-            },
             context : {
                 to: req.body.to,
                 time: req.body.time,
