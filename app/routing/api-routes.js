@@ -35,18 +35,18 @@ module.exports = function(app){
         next();
     });
   
+    app.post ('/api/image', function (req, res) {
+        cloudinary.uploader.upload(req.body.image, function(result) { 
+            imgUrl = result.url;
+        }); 
+    })
+
     app.get ('/api/email', function (req, res) {
         res.send(imgUrl);
    });
 
 	app.post('/api/email', function(req, res){
 
-           
-
-        cloudinary.uploader.upload(req.body.image, function(result) { 
-            imgUrl = result.url;
-        });      
-        
         var mailOptions={
             to : req.body.to,
             subject : 'New Visit Update from WhatsPup',
