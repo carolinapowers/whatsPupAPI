@@ -6,6 +6,13 @@ var smtpTransport   = require('nodemailer-smtp-transport');
 var parseUrlencoded = bodyParser.urlencoded({ extended: false });
 var transporter     = nodemailer.createTransport(smtpTransport(options));
 var inlineBase64 = require('nodemailer-plugin-inline-base64');
+var cloudinary = require ('cloudinary');
+
+cloudinary.config({ 
+  cloud_name: process.env.CLOUDNAME, 
+  api_key: process.env.APIKEY, 
+  api_secret: process.env.APISECRET 
+});
 
 var handlebarOptions = {
      viewEngine: {
@@ -26,7 +33,14 @@ module.exports = function(app){
         next();
     });
   
-	app.post('/api/email', function(req, res){         
+	app.post('/api/email', function(req, res){
+
+        var imgUrl;   
+
+        cloudinary.uploader.upload(req.body.image, function(result) { 
+            imgUrl = result.url;
+        });      
+        
         var mailOptions={
             to : req.body.to,
             subject : 'New Visit Update from WhatsPup',
@@ -54,7 +68,8 @@ module.exports = function(app){
                 plants: req.body.plants,
                 other: req.body.other,
                 message: req.body.message,
-                image: req.body.image
+                //image: req.body.image
+                image: imgUrl
             }
         }
 
