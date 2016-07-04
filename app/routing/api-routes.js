@@ -66,8 +66,8 @@ module.exports = function(app){
                 plants: req.body.plants,
                 other: req.body.other,
                 message: req.body.message,
-                image: req.body.image
-                imageUrl: imgUrl
+                //image: req.body.image
+                image: imgUrl
             }
         }
 
